@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vending_machine/menu.dart';
+import 'screens/menu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Vending Machine',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black54),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromRGBO(33, 33, 33, 1)),
         useMaterial3: true,
       ),
       home: MyHomePage(),
