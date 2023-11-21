@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:vending_machine/screens/list_item.dart';
+import 'package:vending_machine/screens/login.dart';
 import '../screens/menu.dart';
 import '../screens/shoplist_form.dart';
 import '../screens/shoplist_page.dart';
@@ -29,7 +31,8 @@ class LeftDrawer extends StatelessWidget {
                   ),
                 ),
                 Padding(padding: EdgeInsets.all(10)),
-                Text("Catat dan/atau lihat seluruh item pada Vending Machine kamu di sini!",
+                Text(
+                    "Welcome back to Vending Machine Inventory App!",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -63,7 +66,7 @@ class LeftDrawer extends StatelessWidget {
               color: Colors.white,
             ),
             title: const Text(
-              'Lihat Item',
+              'Lihat Item (Tugas 8)',
               style: TextStyle(color: Colors.white),
             ),
             // Bagian redirection ke ShopListPage
@@ -72,6 +75,24 @@ class LeftDrawer extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => const ShopListPage(),
+                  ));
+            },
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.checklist,
+              color: Colors.white,
+            ),
+            title: const Text(
+              'Daftar Item',
+              style: TextStyle(color: Colors.white),
+            ),
+            onTap: () {
+              // Route menu ke halaman produk
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ItemPage(),
                   ));
             },
           ),

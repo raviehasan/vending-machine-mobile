@@ -6,6 +6,35 @@
 
 <details>
 
+<summary>Tugas 9</summary>
+
+## 1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+
+## 2. Jelaskan fungsi dari CookieRequest dan jelaskan mengapa _instance_ CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+
+## 3. Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+
+## 4. Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+
+## 5. Sebutkan seluruh _widget_ yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+
+## 6. Jelaskan bagaimana cara kamu mengimplementasikan _checklist_ di atas secara _step-by-step_! (bukan hanya sekadar mengikuti tutorial).
+
+- [ ] Memastikan _deployment_ proyek tugas Django kamu telah berjalan dengan baik.
+- [ ] Membuat halaman login pada proyek tugas Flutter.
+- [ ] Mengintegrasikan sistem autentikasi Django dengan proyek tugas Flutter.
+- [ ] Membuat model kustom sesuai dengan proyek aplikasi Django.
+- [ ] Membuat halaman yang berisi daftar semua item yang terdapat pada _endpoint_ `JSON` di Django yang telah kamu _deploy_.
+  - [ ] Tampilkan _name_, _amount_, dan _description_ dari masing-masing item pada halaman ini.
+- [ ] Membuat halaman detail untuk setiap item yang terdapat pada halaman daftar Item.
+  - [ ] Halaman ini dapat diakses dengan menekan salah satu item pada halaman daftar Item.
+  - [ ] Tampilkan seluruh atribut pada model item kamu pada halaman ini.
+  - [ ] Tambahkan tombol untuk kembali ke halaman daftar item.
+
+</details>
+
+<details>
+
 <summary>Tugas 8</summary>
 
 ## 1. Jelaskan perbedaan antara `Navigator.push()` dan `Navigator.pushReplacement()`, disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!

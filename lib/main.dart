@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'screens/menu.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
+import 'package:vending_machine/screens/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,14 +13,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Vending Machine',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromRGBO(33, 33, 33, 1)),
-        useMaterial3: true,
+    return Provider(
+      create: (_) {
+        CookieRequest request = CookieRequest();
+        return request;
+      },
+      child: MaterialApp(
+        title: 'Vending Machine',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: const Color.fromRGBO(33, 33, 33, 1)),
+          useMaterial3: true,
+        ),
+        home: const LoginPage(),
       ),
-      home: MyHomePage(),
     );
   }
 }
