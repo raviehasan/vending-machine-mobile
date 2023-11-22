@@ -80,7 +80,6 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const SizedBox(height: 24.0),
             ElevatedButton(
-              child: const Text('Login', style: TextStyle(color: Colors.white)),
               style: ButtonStyle(
                 backgroundColor:
                     MaterialStateProperty.all<Color>(Colors.grey.shade700),
@@ -90,12 +89,9 @@ class _LoginPageState extends State<LoginPage> {
                 String password = _passwordController.text;
 
                 // Cek kredensial
-                // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
-                // Untuk menyambungkan Android emulator dengan Django pada localhost,
-                // gunakan URL http://10.0.2.2/
                 final response = await request.login(
-                    // "http://ravie-hasan-tugas.pbp.cs.ui.ac.id/auth/login/", {
-                  'http://localhost:8000/auth/login/', {
+                    "https://ravie-hasan-tugas.pbp.cs.ui.ac.id/auth/login/", {
+                    // "http://localhost:8000/auth/login/", {
                   'username': username,
                   'password': password,
                 });
@@ -129,6 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                   );
                 }
               },
+              child: const Text('Login', style: TextStyle(color: Colors.white)),
             ),
             const SizedBox(height: 24.0),
             Row(
@@ -139,10 +136,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(width: 12.0),
                 ElevatedButton(
-                  child: const Text(
-                    'Register Now',
-                    style: TextStyle(color: Colors.white),
-                  ),
                   style: ButtonStyle(
                     backgroundColor:
                         MaterialStateProperty.all<Color>(Colors.grey.shade700),
@@ -150,9 +143,13 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => RegisterPage()),
+                      MaterialPageRoute(builder: (context) => const RegisterPage()),
                     );
                   },
+                  child: const Text(
+                    'Register Now',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ],
             ),

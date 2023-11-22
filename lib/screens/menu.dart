@@ -3,7 +3,7 @@ import '../widgets/left_drawer.dart';
 import '../widgets/shop_card.dart';
 
 class MyHomePage extends StatelessWidget {
-  MyHomePage({Key? key}) : super(key: key);
+  MyHomePage({super.key}); // Constructor
 
   final List<ShopItem> items = [
     ShopItem("Lihat Item (Tugas 8)", Icons.checklist, Colors.grey.shade900),

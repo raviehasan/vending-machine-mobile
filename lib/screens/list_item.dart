@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 import 'dart:convert';
 import 'package:vending_machine/models/item.dart';
 import 'package:vending_machine/screens/item_details_page.dart';
@@ -13,30 +15,26 @@ class ItemPage extends StatefulWidget {
 }
 
 class _ItemPageState extends State<ItemPage> {
-  Future<List<Item>> fetchItem() async {
-    // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
-    // var url = Uri.parse('http://ravie-hasan-tugas.pbp.cs.ui.ac.id/json/');
-    var url = Uri.parse('http://localhost:8000/json/');
-    var response = await http.get(
-      url,
-      headers: {"Content-Type": "application/json"},
-    );
-
-    // melakukan decode response menjadi bentuk json
-    var data = jsonDecode(utf8.decode(response.bodyBytes));
-
-    // melakukan konversi data json menjadi object Item
-    List<Item> list_item = [];
-    for (var d in data) {
-      if (d != null) {
-        list_item.add(Item.fromJson(d));
-      }
-    }
-    return list_item;
-  }
-
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
+    Future<List<Item>> response = request
+        // .postJson("http://localhost:8000/user-json/",
+        .postJson("https://ravie-hasan-tugas.pbp.cs.ui.ac.id/user-json/",
+            jsonEncode(<String, String>{"Content-Type": "application/json"}))
+        .then((value) {
+      if (value == null) {
+        return [];
+      }
+      var jsonValue = jsonDecode(value);
+      List<Item> listItem = [];
+      for (var data in jsonValue) {
+        if (data != null) {
+          listItem.add(Item.fromJson(data));
+        }
+      }
+      return listItem;
+    });
     return Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
@@ -47,7 +45,7 @@ class _ItemPageState extends State<ItemPage> {
         // Masukkan drawer sebagai parameter nilai drawer dari widget Scaffold
         drawer: const LeftDrawer(),
         body: FutureBuilder(
-            future: fetchItem(),
+            future: response,
             builder: (context, AsyncSnapshot snapshot) {
               if (snapshot.data == null) {
                 return const Center(child: CircularProgressIndicator());
@@ -71,8 +69,8 @@ class _ItemPageState extends State<ItemPage> {
                                 horizontal: 16, vertical: 12),
                             padding: const EdgeInsets.all(20.0),
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              // crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   "${snapshot.data![index].fields.name}",

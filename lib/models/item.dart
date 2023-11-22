@@ -4,8 +4,6 @@
 
 import 'dart:convert';
 
-import 'package:intl/intl.dart';
-
 List<Item> itemFromJson(String str) =>
     List<Item>.from(json.decode(str).map((x) => Item.fromJson(x)));
 

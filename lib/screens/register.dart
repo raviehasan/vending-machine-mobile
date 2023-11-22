@@ -1,10 +1,8 @@
 import 'dart:convert';
 
-import 'package:vending_machine/screens/menu.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const RegisterApp());
@@ -109,8 +107,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     _passwordConfirmationController.text;
 
                 final response = await request.postJson(
-                  // "http://ravie-hasan-tugas.pbp.cs.ui.ac.id/auth/register/",
-                  'http://localhost:8000/auth/register/',
+                  "https://ravie-hasan-tugas.pbp.cs.ui.ac.id/auth/register/",
+                  // "http://localhost:8000/auth/register/",
                   jsonEncode(<String, String>{
                     'username': username,
                     'password': password,
@@ -119,11 +117,31 @@ class _RegisterPageState extends State<RegisterPage> {
                 );
 
                 if (response["status"] == "success") {
-                  print('User registered successfully');
-                  Navigator.pop(context); // return to login page
+                  Navigator.pop(context); // back to login page
+                  ScaffoldMessenger.of(context)
+                    ..hideCurrentSnackBar()
+                    ..showSnackBar(SnackBar(
+                        content: Text(
+                            "Register berhasil! Akun $username sudah dapat digunakan.")));
                 } else {
-                  print('Failed to register user');
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: const Text('Register Gagal'),
+                      content: Text(response['message']),
+                      actions: [
+                        TextButton(
+                          child: const Text('OK'),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ],
+                    ),
+                  );
                 }
+                if (request.loggedIn) {
+                } else {}
               },
               child: const Text(
                 'Register',

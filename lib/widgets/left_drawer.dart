@@ -6,7 +6,7 @@ import '../screens/shoplist_form.dart';
 import '../screens/shoplist_page.dart';
 
 class LeftDrawer extends StatelessWidget {
-  const LeftDrawer({super.key});
+  const LeftDrawer({super.key}); // Constructor
 
   @override
   Widget build(BuildContext context) {
