@@ -43,7 +43,7 @@ Fungsi CookieRequest adalah untuk _handle_ _cookies_ dan _session_ suatu penggun
 - `TextStyle` => Untuk kustomisasi teks pada page (color, size, etc.).
 - `ElevatedButton` => Untuk efek peninggian dan memberikan respon ketika diklik.
 - `ButtonStyle` => Untuk menentukan style button.
-- `FutureBuilder` => Untuk mengelola status objek (uncompleted, completed, dan error). 
+- `FutureBuilder` => Untuk mengelola status objek (uncompleted, completed, dan error).
 - `ListView` => Menyusun childrennya Dapat digunakan untuk menampilkan list daftar item.
 - `SizedBox` => Pada tugas ini digunakan untuk semacam margin.
 - `InputDecoration` => Untuk mengatur dekorasi elemen input seperti label, icon, dan text style.
@@ -77,7 +77,15 @@ Fungsi CookieRequest adalah untuk _handle_ _cookies_ dan _session_ suatu penggun
   - [ ] Tambahkan tombol untuk kembali ke halaman daftar item.
     - Membuat `ElevatedButton` dengan teks `Back` untuk kembali ke page list item (memanfaatkan `Navigator.pop(context)`).
 
+## Bonus
+
+- [ ] Mengimplementasikan fitur registrasi akun pada aplikasi Flutter.
+  - Membuat fungsi register pada views.py dan routingnya pada urls.py pada app autehntication di Django _project_.
+  - Membuat file `register.dart` untuk halaman register.
+  - Untuk fields username, password, dan password confirmation menggunakan TextField Flutter.
+- [ ] Melakukan filter pada halaman daftar item dengan hanya menampilkan item yang terasosiasi dengan pengguna yang login. - Membuat fungsi get*user_item_json pada views.py dan routingnya user-json/ pada urls.py di app main Django \_project*. Dengan demikian, akan filter item yang terasosiasi dengan user yang bersangkutan. - Memanfaatkan cookie, postJson, jsonEncode, jsonDecode, Future, snapshot, fromJson untuk menerima dan parse data JSON menjadi object Item yang ada di models/.
 </details>
+
 
 <details>
 
@@ -183,6 +191,8 @@ Fungsi CookieRequest adalah untuk _handle_ _cookies_ dan _session_ suatu penggun
     - Memanfaatkan `Navigator.push()` agar tetap bisa kembali ke page sebelumnya
     - `Navigator.push()` ditambahkan di `left_drawer.dart` sebagai suatu `ListTile()`
     - `Navigator.push()` akan mengarahkan ke `ShopFormPage()` pada file `shoplist_form.dart` untuk menjalankan build
+
+## Bonus
 
 - [ ] Membuat sebuah halaman baru, yaitu halaman daftar item yang sudah dibuat dengan isi halamannya adalah setiap data produk yang sudah pernah dibuat.
 
@@ -321,6 +331,11 @@ Fungsi CookieRequest adalah untuk _handle_ _cookies_ dan _session_ suatu penggun
           content: Text("Kamu telah menekan tombol ${item.name}!")));
   },
   ```
+
+## Bonus
+
+- [ ] Kamu akan mendapatkan nilai bonus pada penilaian tugas ini apabila kamu mengimplementasikan warna-warna yang berbeda untuk setiap tombol (`Lihat Item`, `Tambah Item`, dan `Logout`).
+  - Menambahkan atribut `final Color color;` dan menambahkan `Color color` sebagai parameter untuk constructor ShopItem (ada di file `shop_card.dart`).
 
 <hr>
 
